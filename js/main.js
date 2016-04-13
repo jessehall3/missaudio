@@ -6,6 +6,7 @@
 * Copyright 2014, University of Washington
 * http://ableplayer.github.io/ableplayer/
 * Licensed under the MIT license
+* Full license: https://github.com/ableplayer/ableplayer/blob/master/LICENSE
 */
 
 (function($, key, window, document){
