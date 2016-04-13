@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MISS Audio</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="css/custom_font.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body class="background-color base-text-color">
+    <!-- this div necessary to use the $.announce() function -->
+    <div id="a11y_announcer" class="offscreen" aria-live="polite"></div>
+    <!-- The followin div is "on-screen" and used for testing -->
+    <!-- <div id="a11y_announcer" aria-live="polite"></div> -->
+    <div class="row headline">
+        <header class="col-12">
+            <h1>MISS <span id="secondHeading">Audio</span></h1>
+        </header>
+    </div>
+    <!-- Nav Start -->
+    <div class="row">
+        <nav class="col-12">
+            <ul>
+                <li><a href="#miss_audio_player">MISS Audio Player</a></li>
+                <li><a href="#how_it_works">How It Works</a></li>
+                <li><a href="#hot_keys">Hot Keys</a></li>
+                <li><a href="#thanks">Thanks</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- NAV END -->
+
+    <!-- Container START -->
+	<div class="container">
+        <a name="miss_audio_player" id="playerLinkFull" class="offscreen"></a>
+        <div class="row">
+            <div class="col-12 inPlayerCredits">
+                <h2><span class="title">Don Quixote</span>
+                    <span class="part">Part 1</span>
+                    <span class="chapter">Chapter 1</span>
+                </h2>
+                <a href="#credits_and_sources">Credits &amp; Sources</a>
+            </div>
+        </div>
+        <!-- PLAYER START -->
+        <a id="playerLinkMini" class="offscreen"></a>
+        <div id="player_container">
+            <audio id="audioElem">
+                You're browser does not support the audio element.
+            </audio>
+            <div id="interactiveText">
+                <div id="loadingBanner" class="loading">
+                    <div id="loadingMessage" class="loading">Loading ...</div>
+                </div>
+            </div>
+            <!-- Control panel start -->
+            <div id="control_panel">
+                <h3 class="offscreen">Control Panel</h3>
+                <div class="btn_container">
+                    <div class="btn_row replayRow">
+                        <button id="replay" class="big_btn" type="button" name="button">Replay</button>
+                    </div>
+                    <div class="btn_row backForwardRow">
+                        <button id="backwardGroup" class="icon-previous2" title="Previous Segment" aria-label="Previous Segment"></button>
+                        <button id="forwardGroup" class="rightBtn icon-next2" title="Next Segment" aria-label="Next Segment"></button>
+                        <!-- <button id="playPause" class="big_btn icon-play3" aria-label="Play"></button> -->
+                    </div>
+                    <div class="btn_row playRow">
+                        <button id="playPause" class="big_btn icon-play3" aria-label="Play"></button>
+                    </div>
+                    <div class="btn_row onlyOver700">
+                        <button id="backwardTime" class="icon-backward2" title="Rewind 1 Second" aria-label="Rewind One Second"></button>
+                        <button id="forwardTime" class="rightBtn icon-forward3" title="Forward 1 Second" aria-label="Forward One Second"></button>
+                    </div>
+                    <div class="btn_row onlyOver700">
+                        <button id="slower" class="icon-circle-left" title="Slow Down" aria-label="Slower"></button>
+                        <button id="faster" class="rightBtn icon-circle-right" title="Speed Up" aria-label="Faster"></button>
+                    </div>
+                    <!-- <button id="stop" class="icon-stop2" title="Stop" aria-label="Stop"></button> -->
+                    <!-- <button id="volumeDown" class="icon-volume-mute" title="Volume Down" aria-label="Volume Down"></button> -->
+                    <!-- <button id="volumeUp" class="icon-volume-medium" title="Volume Up" aria-label="Volume Up"></button> -->
+                    <!-- <button id="mute" class="icon-volume-mute2" title="Mute" aria-label="Mute"></button> -->
+                </div>
+                <div class="status_text_container">
+                    <div id="timeRow" class="status_text_row curtain">
+                        <span id="currentTimeSpan">00:00</span> /
+                        <span id="durationSpan">00:00</span>
+                    </div>
+                    <div id="speedRow" class="status_text_row">
+                        <span id="rateSpan">Speed: 1.00</span>x
+                    </div>
+                    <div id="stopPlayingRow" class="status_text_row">
+                        <span id="status">Stopped</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Control Panel End -->
+        </div>
+        <!-- PLAYER END -->
+        <!-- BODY CONTAINER START -->
+        <div class="row">
+            <div class="bodyContainer">
+                <!-- Credits Start -->
+                <a name="credits_and_sources" class="offscreen"></a>
+                <div class="row">
+                    <div class="col-12 credits">
+                        <h2>Credits &amp; Sources</h2>
+                        <div class="creditsContainer">
+                            <p><span class="creditHeader">Author:</span><a href="https://en.wikipedia.org/wiki/Miguel_de_Cervantes">Miguel de Cervantes Saavedra</a></p>
+                            <p><span class="creditHeader">Translation by:</span> <a href="https://en.wikipedia.org/wiki/John_Ormsby_%28translator%29">John Ormsby</a></p>
+                            <p><span class="creditHeader">Audio provided by:</span><a href="https://librivox.org/">Librivox</a></p>
+                            <p><span class="creditHeader">Chapter read by:</span><a href="https://librivox.org/reader/407">Nessi</a></p>
+                            <p><a href="https://librivox.org/don-quijote-vol-1-by-miguel-de-cervantes-saavedra/">Full Audiobook</a></p>
+                            <p><span class="creditHeader">Text provided by:</span> <a href="https://www.gutenberg.org/">Project Gutenburg</a></p>
+                            <p><a href="https://www.gutenberg.org/ebooks/2000">Full Original Text In Spanish</a></p>
+                            <p><a href="https://www.gutenberg.org/ebooks/996">Full Translation In English</a></p>
+                            <p><a href="https://en.wikipedia.org/wiki/Don_Quixote">Read More About Don Quixote</a></p>
+                        </div>
+                        <h3>Some Notes</h3>
+                        <ul>
+                            <li>
+                                All pairings of Spanish and English segments were done by myself. I am not a professional translator or native Spanish speaker; I hope you can except any errors I've made kindly.
+                            </li>
+                            <li>
+                                There are some minor discrepancies between the recorded audio and the text.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Credits End -->
+                <!-- how_it_works Start -->
+                <a name="how_it_works" class="offscreen"></a>
+                <div class="row">
+                    <div class="col-12 credits">
+                        <h2>How It Works</h2>
+                        <p>
+                        <b>MISS Audio</b> is an audio player that displays interactive transcripts in multiple languages at the same time.
+                        </p>
+                        <p>It's meant to aid in the comprehension of human speech in a foreign language. Here this is done by presenting the text of that speech in both the original language, and
+                        a translation, all at once.
+                        <p>
+                        <p>
+                        The player consists of two columns of text and a control panel with buttons. The first column of text is in the original language of the audio. The second column of text is its translation.
+                        </p>
+                        <p>
+                        Text in either column can be reached with the tab key as well as using a number of keyboard combinations described below.
+                        <!-- All buttons in the control panel have a corresponding keyboard combination. -->
+                        </p>
+                        <p>
+                        It was a goal to make this application rich in accessibility features;
+                        suggestions for improvements are appreciated.
+                        </p>
+
+                        <h3>Browsing The Transcripts</h3>
+                        <p>
+                        Users can point and click, or tab through and press enter, on any segment of text and the audio will begin playing at that point. The audio pauses automatically after each segment. If you wish to play continuously, without the pauses, hit the play button or use the key combination Control+Alt+spacebar.
+                        </p>
+                        <p>
+                        If tabbing through one column of text, you may wish to jump to
+                        corresponding segment of text in the opposite column. To do this, press Control+Alt+t.
+                        </p>
+                        <p>To move the focus to the highlighted segment in the
+                        original language press Control+Alt+1. Fort the translated text, press Control+Alt+2.
+                        </p>
+                        <p>For screen reader users: To announce the translated segment
+                        corresponding to the current segment in focus, press Control+Alt+q.
+                        This command is intended to make it easy to tab through the
+                        original text and be able to read the corresponding translation
+                        without moving the focus.</p>
+
+                        <h3>Navigating The Audio</h3>
+                        <p>To replay the currently highlighted segment, hit the replay button
+                        or press Control+Alt+l. To play the next segment, press Control+Alt+k or hit the right sided button below "Replay." To move backward and play the previous segment, press Control+Alt+j or hit the left sided button below "Replay."
+                        </p>
+                        <p>For screen reader users: To announce the highlighted segment of
+                        the translated text at any time, press Control+Alt+o.
+                        </p>
+                        <p>As mentioned before, the audio will stop automatically after each
+                        segment. Whenever you wish to hear the audio play continuously
+                        through all segments, just hit the play button or press Control+Alt+spacebar.
+                        </p>
+                    </div>
+                </div>
+                <!-- how_it_works END -->
+
+                <!-- Hot Keys Start  -->
+                <a name="hot_keys" class="offscreen"></a>
+                <div class="row">
+                    <div class="col-12 hotKeys">
+                        <H2>Hot Keys</H2>
+                        <div class="tableContainer">
+                            <TABLE>
+                                <TR>
+                                    <TH scope="col">Function</TH>
+                                    <TH scope="col">Keys</TH>
+                                    <TH scope="col">Description</TH>
+                                </TR>
+                                <TR>
+                                    <TD>Play/Pause</TD>
+                                    <TD>Alt + Control + spacebar or p</TD>
+                                    <TD>Play or pause the audio.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Stop</TD>
+                                    <TD>Alt + Control + s</TD>
+                                    <TD>Stop the audio and return to the beginning of the track.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Play Previous Segment</TD>
+                                    <TD>Alt + Control + j</TD>
+                                    <TD>Jump to the previous text segment and play.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Play Next Segment</TD>
+                                    <TD>Alt + Control + k</TD>
+                                    <TD>Jump to the next text segment and play.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Replay Current Segment</TD>
+                                    <TD>Alt + Control + l</TD>
+                                    <TD>Replay  the current segment.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Announce Highlight in Translated Text </TD>
+                                    <TD>Alt + Control + o</TD>
+                                    <TD>For Screen Reader Users: Announce the highlighted segment of the translated text. This is for convenience while navigating the audio using the j, k, and l keys.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Announce Focus in Translated Text</TD>
+                                    <TD>Alt + Control + q</TD>
+                                    <TD>For Screen Reader Users: Announce the translated segment corresponding to whatever segment is in focus. This is for convenience while tabbing through the text of the original language.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Translate and Switch Columns</TD>
+                                    <TD>Alt + Control + t</TD>
+                                    <TD>This will jump the system focus from one column of text to the corresponding segment in the other one. Original language segments will jump to a translation and vice-versa.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Focus Original Highlighted Text</TD>
+                                    <TD>Alt + Control + 1</TD>
+                                    <TD>Move the system focus to the highlighted segment in the original language.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Focus Translated Highlighted Text</TD>
+                                    <TD>Alt + Control + 2</TD>
+                                    <TD>Move the system focus to the highlighted segment in the translated text.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Fast Forward</TD>
+                                    <TD>Alt + Control + f</TD>
+                                    <TD>Move forward one second.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Rewind</TD>
+                                    <TD>Alt + Control + r</TD>
+                                    <TD>Rewind one second.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Increase Speed</TD>
+                                    <TD>Alt + Control + x</TD>
+                                    <TD>Increase the speed of the audio.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Decrease Speed</TD>
+                                    <TD>Alt + Control + z</TD>
+                                    <TD>Decrease the speed of the audio.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Mute</TD>
+                                    <TD>Alt + Control + m</TD>
+                                    <TD>Mute the audio.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Volume Up</TD>
+                                    <TD>Alt + Control + u</TD>
+                                    <TD>Increase the volume.</TD>
+                                </TR>
+                                <TR>
+                                    <TD>Volume Down</TD>
+                                    <TD>Alt + Control + d</TD>
+                                    <TD>Decrease the volume.</TD>
+                                </TR>
+                            </TABLE>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hot Keys End -->
+
+                <!-- Thanks Start -->
+                <a name="thanks" class="offscreen"></a>
+                <div class="row">
+                    <div class="col-12 thanks">
+                        <h2>Thanks</h2>
+                        <a class="able" href="http://ableplayer.github.io/ableplayer/">Able Player</a>
+                        <p>Before starting work on the project, I had already planned to use Able Player, an
+                        accessible media player, as a guide for implementing general accessibility features and best practices. As could be expected, the more pieces I examined and adopted into this project, the more I discovered &ndash; much more than I had anticipated. This work is still in progress.
+                        </p>
+                        <p>A big thanks to everyone involved in that project for enabling
+                        this learning experience.</p>
+                    </div>
+                </div>
+                <!-- Thanks End -->
+                <!-- Contact Start -->
+                <a name="contact" class="offscreen"></a>
+                <div class="row">
+                    <div class="col-12 contact">
+                        <h2>Contact</h2>
+                        <p>Do you have questions or comments?</p>
+                        <p>
+                            <b>E-mail:</b> Jesse@Jesse3.com
+                        </p>
+                        <div class="">
+                            <a class="git" href="https://github.com/jessehall3/missaudio">View The Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact End -->
+            </div>
+        </div>
+        <!-- BODY CONTAINER END -->
+    </div>
+    <!-- Container End -->
+    <div class="row baseBlack">
+        <footer class="col-12">
+            <div class="iconCredits">
+                <p>
+                    Icons from: <a href="https://icomoon.io/">Icomoon</a>
+                </p>
+                <p>
+                    By: <a href="http://keyamoon.com/">Keyamoon</a>
+                </p>
+                <p>
+                    License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+<script src="js/keymaster.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/ay11_kit.jquery.js"></script>
+<script type="text/javascript">
+// This mini script changes the position of the "miss_audio_player" index
+// depending on the size of the screen. It's just a quick fix to position the player
+// at the top of the screen when the screen width is under 700px.
+var changeLink = function() {
+    if ($(window).width() < 700) {
+        $('#playerLinkFull').removeAttr('name');
+        $('#playerLinkMini').attr('name','miss_audio_player');
+    }
+    else {
+        $('#playerLinkMini').removeAttr('name');
+        $('#playerLinkFull').attr('name','miss_audio_player');
+    }
+};
+changeLink();
+$(window).resize(function() {
+    changeLink();
+});
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

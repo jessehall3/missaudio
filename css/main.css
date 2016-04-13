@@ -1,0 +1,602 @@
+/*!
+* Copyright 2016, Jesse Hall III
+* This software may be freely distributed and modified under the MIT license.
+*
+* This software incorporates code and design features from Able Player:
+* Copyright 2014, University of Washington
+* http://ableplayer.github.io/ableplayer/
+* Licensed under the MIT license
+*/
+
+*{
+box-sizing: border-box;
+}
+
+/* Grid System START */
+.row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-1{width: 8.33%;}
+.col-2{width: 16.66%;}
+.col-3{width: 25%;}
+.col-4{width: 33.33%;}
+.col-5{width: 41.66%;}
+.col-6{width: 50%;}
+.col-7{width: 58.33%;}
+.col-8{width: 66.66%;}
+.col-9{width: 75%;}
+.col-10{width: 83.33%;}
+.col-11{width: 91.66%;}
+.col-12{width: 100%;}
+/* Grid System END */
+
+/* 0ffscreen from Able Player*/
+.offscreen {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+.background-color{
+    background-color: #FEFDF8;
+    margin: 0;
+}
+.base-text-color{
+    color: #111;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+/* container holds everything below the nav section and above the footer including the player */
+.container{
+    width: 100%;
+    overflow: auto;
+}
+html{font-size: 1 rem;}
+h1{font-size: 3.1rem;}
+h2{
+    font-size: 2.7rem;
+    color: #fefdf8;
+    background-color: #282323;
+    max-width: 525px;
+    margin: 0px auto 3rem;
+    padding: .75rem;
+}
+h3{
+    font-size: 1.8rem;
+    background-color: #85fec1;
+    color: #111;
+    max-width: 525px;
+    margin: 3rem auto 1rem;
+    padding: .5rem;
+}
+p{
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.01rem;
+    line-height: 130%;
+}
+
+/* MISS Audio Player And Buttons Formatting START */
+#player_container{
+  width: 97%;
+  height: 95vh;
+  margin: 0px auto 0rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+#interactiveText{
+    position: relative;
+    width: 100%;
+    height: 88%;
+    border: solid #282323 5px;
+}
+#control_panel h3{color: white;}
+#control_panel{
+    width: 100%;
+    height: 12%;
+    background-color: #282323;
+    position: relative;
+}
+#control_panel button{
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 1.8rem;
+  margin: 0px;
+  border-radius: .3rem;
+  background-color: #fefdf8;
+  color: #282323;
+}
+.btn_container{
+    width: 14rem; margin: .5rem auto 0px;}
+.btn_row{
+    display: inline;
+}
+.playRow{float: right;}
+#playPause{width: 5rem;}
+.backForwardRow button{margin-right: .2rem;}
+.replayRow{display: none;}
+.status_text_container{display: none;}
+.onlyOver700{display: none;}
+/* MISS Audio Player And Buttons Formatting END */
+
+/* Make Text Columns START */
+.oneColumn{width: 100%; height: 100%;}
+.twoColumns{width: 100%; height: 50%;}
+.threeColumns{width: 100%; height: 33.33%;}
+.fourColumns{width: 100%; height: 25%;}
+.column{
+  padding: .5rem;
+  overflow: auto;
+  float: left;
+  font-size: 1.1rem;
+}
+.firstCol{
+    border-style: solid;
+    border-color: #282323;
+    border-width: 0px 0px .15rem 0px;
+}
+
+.middleCol{
+    border-style: solid;
+    border-color: #282323;
+    border-width: .15rem 0px .15rem 0px;
+}
+
+.lastCol{
+    border-style: solid;
+    border-color: #282323;
+    border-width: .15rem 0px 0px 0px;
+}
+/* Make Text Columns END */
+
+/* WORD SELECTION START */
+.selected{
+  background-color: #A9C7FD;
+  text-decoration-color: black ;
+  text-decoration: underline solid black;
+}
+
+#interactiveText span:hover,
+#interactiveText span:focus,
+#interactiveText span:active
+{
+  background-color: #85FEC1;
+  cursor: pointer;
+}
+
+button:focus{
+     box-shadow: 0 0 0 2pt #85FEC1;
+}
+/* WORD SELECTION END */
+
+/* Loading Banners and Curtains START */
+/* timeRow displays the time */
+/* it starts out the same color as the background (provided by the "curtain" class)*/
+/* and then eases into white*/
+.curtain{color: #282323 !important;}
+#timeRow{transition: color 2s ease;}
+
+#loadingBanner{
+    height: 100%;
+    width: 100%;
+    background-color: #3C3939;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#loadingBanner div{
+    position: relative;
+    color: white;
+    font-size: 3rem;
+    top: 25%;
+    text-align: center;
+}
+/* Loading Banners and Curtains END */
+
+/* Headline START */
+/* headline is the main banner above the nav section */
+.headline{background-color: #282323;}
+header h1{
+    text-align: center;
+    color: #FEFDF8;
+}
+#secondHeading{display: block;color: #85fec1;}
+/* Headline END */
+
+/* NAV START */
+nav{
+    background-color: #282323;
+    position: relative;
+}
+nav ul{
+    padding: 0px;
+    margin: 1px 0px;
+    text-align: center;
+}
+nav li{
+    list-style: none;
+    margin: .75rem auto;
+    display: block;
+    text-align: center;
+    margin-left: min 20px;
+}
+nav a{font-size: 1.4rem;}
+nav a{
+  font-weight: 600;
+  margin: 10px;
+  text-decoration: none;
+  display: inline-block;
+  color: #FEFDF8;
+  padding: .15rem;
+  border: solid #85FEC1 .25rem;
+}
+nav a:hover {
+  background: #111;
+  text-decoration: none;
+  color: #85fec1;
+}
+/* NAV END */
+
+/* inPlayerCredits START */
+/* inPlayerCredits is the row sitting right above the player */
+/* it includes the title, part, chapter, and link to the credits section */
+.playerLink1{display: none;}
+.inPlayerCredits{text-align: center;}
+.inPlayerCredits h2{
+    color: #111;
+    background-color: transparent;
+    text-align: left;
+    margin: 1rem auto .5rem;
+    font-size: 2.0rem;
+    padding: 1rem;
+    max-width: 20rem;
+}
+.inPlayerCredits a{font-size:1.4rem;}
+.part{font-size: 1.7rem;}
+.chapter{font-size: 1.7rem;}
+.inPlayerCredits a{
+    font-weight: 600;
+    margin-bottom:1rem;
+    text-decoration: none;
+    text-align: center;
+    padding: .2rem;
+    display: inline-block;
+    border: solid #85FEC1 .3rem;
+    color: #FEFDF8;
+    background-color: #282323;
+    box-shadow: 0px 0px 1pt 1pt black;
+}
+.inPlayerCredits a:hover{
+    background-color: #111;
+    color: #85fec1;
+}
+/* inPlayerCredits END */
+
+/* Body Container START */
+/* Body Container Holds everything between the player and the footer */
+.bodyContainer{
+    margin: auto;
+    max-width: 775px;
+    width: 94%;
+}
+.bodyContainer .row{margin: 6rem auto 5rem;}
+/* Body Container END */
+
+/* Credits Section Start */
+/* the "how it works" section uses the .credits class as well */
+/* there is no separate set of classes for the "how it works" section */
+.credits{text-align: center;}
+.credits p{text-align: left;}
+.creditHeader{
+    color: #111;
+    font-weight: 600;
+}
+.credits a{
+    font-weight: 600;
+    margin: .5rem;
+    text-decoration: underline;
+    padding: .7rem 1rem;
+    display: inline-block;
+    color: #111;
+    background-color: #85FEC1;
+    font-size: 1.3rem;
+}
+.credits a:hover{
+    background-color: #FEFD85;
+}
+.credits li{
+    font-size: 1.3rem;
+    text-align: left;
+    margin: 1rem;
+}
+/* Credits Section END */
+
+/* Hot Keys START */
+.tableContainer {
+    width: 90vw;
+    max-width: 770px;
+    margin: 0px auto 0px;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 75vh;
+    border: .2rem solid #282323;
+}
+.hotKeys h2{text-align: center;}
+th, td { min-width: 200px;}
+td{border-right: .2em solid #282323;}
+table td:last-child {
+border-right: none;
+}
+.hotKeys table
+{
+	font-size: 1.15rem;
+	text-align: left;
+	border-collapse: collapse;
+}
+.hotKeys th
+{
+    font-size: 1.7rem;
+	font-weight: bold;
+	padding: .5rem;
+	background: #282323;
+	color: #fefdf8;
+    text-decoration-color: #808080;
+}
+.hotKeys td
+{
+	padding: .5rem;
+	border-bottom: .1em solid #282323;
+	color: black;
+}
+.hotKeys tr:hover td
+{
+	background: #BFFFDF;
+}
+/* Hot Keys Section END */
+
+/* Thanks Section START*/
+.thanks{text-align: center;}
+.thanks p{text-align: left;}
+.able{
+    font-weight: 600;
+    text-decoration: underline;
+    padding: .7rem 1rem;
+    display: inline-block;
+    color: #111;
+    background-color: #85FEC1;
+    font-size: 1.7rem;
+}
+a.able:hover{
+    background-color: #FEFD85;
+}
+.git{
+    font-weight: 600;
+    margin: 1rem;
+    text-decoration: underline;
+    padding: .7rem 1rem;
+    display: inline-block;
+    color: #111;
+    background-color: #85FEC1;
+    font-size: 1.3rem;
+}
+a.git:hover{
+    background-color: #FEFD85;
+}
+/* Thanks Section END*/
+
+/* Contact Section STARTS */
+.contact{text-align: center !important;}
+/* Contact Section ENDS*/
+
+/* Footer STARTS */
+.baseBlack{
+    background-color: #282323;
+}
+footer{
+    color: #85fec1;
+    min-height: 330px;
+}
+footer a{
+    text-decoration: none;
+    background-color: #85fec1;
+    color: #282323;
+    padding: 0px 3px;
+}
+footer a:hover{
+    background-color: #FEFD85;
+}
+.iconCredits{
+    width: 17rem;
+    margin: 2rem auto;
+}
+/* Footer ENDS */
+
+@media (min-width:400px){
+    .creditsContainer{max-width: 525px; margin: auto;}
+    #interactiveText{height: 79%;}
+    #control_panel{height: 21%; overflow: auto;}
+    .btn_container{
+        width: 23rem;
+        margin: .5rem auto 0px;
+    }
+    /* replay row holds the replay button*/
+    .replayRow{
+        display: inline;
+        margin-left: .3rem;
+        margin-right: 1.5rem;
+    }
+    #replay{font-weight: 600;}
+    /* play row holds the play button*/
+    .playRow{
+        float: right;
+        margin-right: .3rem;
+    }
+    /* status text container includes the time row, the speed row, and the "stopPlaying" row*/
+    .status_text_container{
+        display: block;
+        text-align: center;
+        margin-top: 3%;
+    }
+    .status_text_row{
+        color: white;
+        display: inline;
+        font-size: 1.3rem;
+    }
+    /* time row displays the current time and the duration */
+    #timeRow{margin-left: .6rem;}
+    /* speed row displays the playback rate of the audio */
+    #speedRow{display: none;}
+    /* stopPlaying row displays the state of the audio*/
+    /* either: Stopped, Playing, Paused, or Ended */
+    #stopPlayingRow{
+        display: none;
+    }
+}
+@media (min-width:600px){
+    nav li{display: inline-block;}
+    nav{
+        min-height: 15rem;
+        margin-bottom: 1rem;
+    }
+    /* This doesn't center vertically, but does the trick*/
+    nav ul{
+        margin-top: 5%;
+    }
+}
+@media (min-width:700px){
+    h1{font-size: 4.85rem;}
+
+    /* Make Text Columns START */
+    /* text columns go from being vertically stacked to a horizontal layout at 700px*/
+    .oneColumn{width: 100%; height: 100%;}
+    .twoColumns{width: 50%; height: 100%;}
+    .threeColumns{width: 33.33%; height: 100%;}
+    .fourColumns{width: 25%; height: 100%;}
+    .firstCol{
+        border-style: solid;
+        border-color: #282323;
+        border-width: 0px .15rem 0px 0px;
+    }
+    .middleCol{
+        border-style: solid;
+        border-color: #282323;
+        border-width: 0px .15rem 0px .15rem;
+    }
+    .lastCol{
+        border-style: solid;
+        border-color: #282323;
+        border-width: 0px 0px 0px .15rem;
+    }
+    /* Make Text Columns END */
+
+    #secondHeading{display: inline;}
+    #loadingBanner div{font-size: 5rem;}
+    #player_container{height: 80vh;}
+
+    /* inPlayerCredits START */
+    .inPlayerCredits{margin: .4rem auto; width: 95%;}
+    .inPlayerCredits h2{
+        font-size: 2.1rem;
+        display: inline;
+        margin-right: 2.5rem;
+        /*width: 7.5rem;*/
+    }
+    .inPlayerCredits a {
+        font-size: 1.4rem;
+        margin: 1rem auto .4rem;
+    }
+    .part{display: inline;font-size: 1.8rem;}
+    .chapter{display: inline;font-size: 1.8rem;}
+    /* inPlayerCredits END */
+
+    #interactiveText{height: 100%; width: 84%;}
+    #control_panel{
+        height: 100%;
+        width: 16%;
+        float: right;
+        overflow: auto;
+    }
+    #control_panel button{
+      min-width: 40px;
+      min-height: 40px;
+      font-size: 1.6rem;
+      width: 45%;
+    }
+    .btn_container{
+        margin: 1.5rem auto 0px;
+        max-width: 9rem;
+        width: 100%;
+    }
+    .btn_row{
+        display: block;
+        margin-bottom: .8rem;
+    }
+    .playRow{float: none; margin: 0px; margin-bottom: .8rem;}
+    #playPause{font-weight: 600; width: 100% !important;}
+    .replayRow{margin: 0px; margin-bottom: .8rem;}
+    #replay{font-weight: 600; width: 100% !important;}
+    .rightBtn{float: right;}
+
+    .status_text_container{
+        text-align: left;
+        max-width: 9rem;
+        margin: .8rem auto auto;
+    }
+    .status_text_row{
+        margin: .5rem 0px;
+        font-size: 1.2rem;
+    }
+    #timeRow{margin-left: 0px;}
+    #speedRow{
+        display: block;
+    }
+    #stopPlayingRow{
+        display: block;
+    }
+}
+
+@media(min-width:915px){
+
+    #headline ul{
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    /* nav START */
+    .nav_container {
+      margin: 45px 0px;
+    }
+    .nav li{
+        display: inline-block;
+    }
+    .nav a{
+      font-size: 20px;
+      text-decoration: none;
+      padding: 5px;
+      display: inline;
+    }
+    .nav a:hover {
+      background: #111;
+      text-decoration: none;
+    }
+    /* nav END */
+
+    /* footer START */
+    .iconCredits{
+        width: 54rem;
+        margin: 4rem auto;
+    }
+    .iconCredits p{
+        padding: 1rem;
+        display: inline;
+        font-size: 1.5rem;
+    }
+    /* footer END */
+}
