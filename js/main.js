@@ -9,7 +9,7 @@
 * Full license: https://github.com/ableplayer/ableplayer/blob/master/LICENSE
 */
 
-(function($, key, window, document){
+// (function($, key, window, document){
 
 var model = {
     defaultAudioList : ["quijote_chap_1_spanish.ogg",
@@ -237,10 +237,15 @@ var controller = {
                                 var jsonData = callData.jsonData;
                                 var index = callData.index;
                                 controller.processJSON(jsonData, index);
+                            
+                                return index;
+                            }
+                        ).then(
+                            function(index){
                                 // fills column with words and highlighting
                                 view.renderColumn(model.columns[index]);
                             }
-                        )
+                        );
             }
         );
     },
@@ -663,14 +668,17 @@ var view = {
             var hrsSecsMins = view.getHoursSecsMins(currentTime);
             var displayTimeString = view.getFormattedTime(hrsSecsMins);
             $('#currentTimeSpan').text(displayTimeString);
-            if (model.isAutoPauseActivated) {
-                var currentGroupIndex = model.lastGroupVisited;
-                var i = model.originalColumnIndex;
-                var target = model.columns[i].groups[currentGroupIndex].end_time
-                controller.playPauseCheckStates(currentTime, target);
-            }
-            else {
-                controller.checkStates(currentTime);
+            
+            var i = model.originalColumnIndex;
+            if(model.columns[i] !== undefined){
+                if (model.isAutoPauseActivated) {
+                    var currentGroupIndex = model.lastGroupVisited;
+                    var target = model.columns[i].groups[currentGroupIndex].end_time
+                    controller.playPauseCheckStates(currentTime, target);
+                }
+                else {
+                    controller.checkStates(currentTime);
+                }
             }
         }, 50);
     },
@@ -941,4 +949,4 @@ $(document).ready(function($) {
   controller.init();
 });
 
-}(window.jQuery, window.key, window, document));
+// }(window.jQuery, window.key, window, document));
