@@ -946,6 +946,18 @@ var controlsView ={
 };
 
 $(document).ready(function($) {
+    // quick fix for IE promises support
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie > 0) // If Internet Explorer, return version number
+    {
+        $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js", function( data, textStatus, jqxhr ) {
+          console.log( data ); // Data returned
+          console.log( textStatus ); // Success
+          console.log( jqxhr.status ); // 200
+          console.log( "Load was performed." );
+        })
+    }
   controller.init();
 });
 
