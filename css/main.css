@@ -114,14 +114,14 @@ p{
   color: #282323;
 }
 .btn_container{
-    width: 14rem; margin: .5rem auto 0px;}
+    width: 14rem;
+    margin: .5rem auto 0px;
+    text-align: center;
+}
 .btn_row{
     display: inline;
 }
-.playRow{float: right;}
 #playPause{width: 5rem;}
-.backForwardRow button{margin-right: .2rem;}
-.replayRow{display: none;}
 .status_text_container{display: none;}
 .onlyOver700{display: none;}
 /* MISS Audio Player And Buttons Formatting END */
@@ -426,17 +426,9 @@ footer a:hover{
         width: 23rem;
         margin: .5rem auto 0px;
     }
-    /* replay row holds the replay button*/
-    .replayRow{
-        display: inline;
-        margin-left: .3rem;
-        margin-right: 1.5rem;
-    }
-    #replay{font-weight: 600;}
     /* play row holds the play button*/
     .playRow{
-        float: right;
-        margin-right: .3rem;
+        display: inline;
     }
     /* status text container includes the time row, the speed row, and the "stopPlaying" row*/
     .status_text_container{
@@ -445,6 +437,7 @@ footer a:hover{
         margin-top: 3%;
     }
     .status_text_row{
+        margin-right: .3rem;
         color: white;
         display: inline;
         font-size: 1.3rem;
@@ -533,6 +526,7 @@ footer a:hover{
         margin: 1.5rem auto 0px;
         max-width: 9rem;
         width: 100%;
+        text-align: left;
     }
     .btn_row{
         display: block;
